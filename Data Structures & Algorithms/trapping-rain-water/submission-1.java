@@ -1,0 +1,18 @@
+class Solution {
+    public int trap(int[] arr) {
+        int result = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            int left = arr[i];
+            for (int j = 0; j < i; j++) {
+                left = Math.max(left, arr[j]);
+            }
+
+            int right = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                right = Math.max(right, arr[j]);
+            }
+            result += Math.min(left, right) - arr[i];
+        }
+        return result;
+    }
+}
